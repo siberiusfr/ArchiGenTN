@@ -1,0 +1,79 @@
+# ========================
+# ArchiGenTN - Docker Compose (Development)
+# ========================
+# Usage: docker-compose up -d
+# Dashboard: http://localhost:3000 (frontend) | http://localhost:8080 (backend)
+
+services:
+  # --- PostgreSQL Database ---
+  postgres:
+    image: postgres:16-alpine
+    container_name: archigentn-postgres
+    environment:
+      POSTGRES_DB: archigentn
+      POSTGRES_USER: archigen
+      POSTGRES_PASSWORD: archigen_dev_2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U archigen -d archigentn"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Redis Cache (optionnel pour MVP) ---
+  redis:
+    image: redis:7-alpine
+    container_name: archigentn-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Spring Boot Backend ---
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: archigentn-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/archigentn
+      SPRING_DATASOURCE_USERNAME: archigen
+      SPRING_DATASOURCE_PASSWORD: archigen_dev_2024
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # TODO: Ajouter health check pour le backend
+
+  # --- Next.js Frontend ---
+  frontend:
+    build:
+      context: ./archigen
+      dockerfile: Dockerfile
+    container_name: archigentn-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

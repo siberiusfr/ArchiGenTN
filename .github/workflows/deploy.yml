@@ -1,0 +1,95 @@
+# ========================
+# ArchiGenTN - Deployment Pipeline
+# ========================
+# Placeholder pour deploiement automatise
+# TODO: Configurer selon l'infrastructure cible
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    # Deploiement uniquement sur tag de release
+    # tags: ['v*']
+
+# Deploiement manuel possible
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environnement cible'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  # --- Build Docker Images ---
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # TODO: Configurer Docker registry (GitHub Container Registry, Docker Hub, etc.)
+      # - name: Login to Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Backend Image
+        run: docker build -t archigentn-backend:${{ github.sha }} ./backend
+
+      - name: Build Frontend Image
+        run: docker build -t archigentn-frontend:${{ github.sha }} ./archigen
+
+      # TODO: Push images vers le registry
+      # - name: Push Images
+      #   run: |
+      #     docker push ghcr.io/${{ github.repository }}/backend:${{ github.sha }}
+      #     docker push ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}
+
+  # --- Deploy to Staging ---
+  deploy-staging:
+    name: Deploy to Staging
+    needs: build
+    if: github.event.inputs.environment == 'staging' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Deploy placeholder
+        run: |
+          echo "TODO: Deploiement vers staging"
+          echo "Options:"
+          echo "  - SSH + docker-compose pull/up"
+          echo "  - Kubernetes apply"
+          echo "  - Vercel deploy (frontend)"
+          echo "  - Railway deploy (backend)"
+
+      # TODO: Implementer le deploiement reel
+      # - name: Deploy via SSH
+      #   uses: appleboy/ssh-action@v1
+      #   with:
+      #     host: ${{ secrets.STAGING_HOST }}
+      #     username: ${{ secrets.STAGING_USER }}
+      #     key: ${{ secrets.STAGING_SSH_KEY }}
+      #     script: |
+      #       cd /app/archigentn
+      #       docker-compose pull
+      #       docker-compose up -d
+
+  # --- Deploy to Production ---
+  deploy-production:
+    name: Deploy to Production
+    needs: build
+    if: github.event.inputs.environment == 'production'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Deploy placeholder
+        run: echo "TODO: Deploiement vers production"
+
+      # TODO: Meme pattern que staging avec approbation manuelle

@@ -1,0 +1,22 @@
+# ========================
+# ArchiGenTN - Python Dependencies
+# ========================
+
+# DXF generation (plans AutoCAD)
+ezdxf>=1.3.0
+
+# Numerical computing
+numpy>=1.26.0
+
+# HTTP client (communication avec le backend Spring Boot)
+requests>=2.31.0
+
+# Structural analysis
+PyNiteFEA>=0.0.94
+
+# Blender scripting (installe separement via Blender Python)
+# bpy est fourni par Blender, pas pip
+
+# Utilities
+shapely>=2.0.0         # Operations geometriques avancees
+Pillow>=10.0.0         # Traitement d'images (rendus)
