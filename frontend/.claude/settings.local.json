@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install:*)",
       "Bash(npm run api:generate:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(npx next build:*)"
     ]
   }
 }

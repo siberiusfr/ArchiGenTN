@@ -53,7 +53,7 @@ export const getGeneratePlan1Url = () => {
 
   
 
-  return `http://localhost:8080/api/plans/ai/generate`
+  return `/api/plans/ai/generate`
 }
 
 export const generatePlan1 = async (planGenerateRequest: PlanGenerateRequest, options?: RequestInit): Promise<generatePlan1Response> => {
@@ -142,7 +142,7 @@ export const getGenerateAndExportDxf1Url = () => {
 
   
 
-  return `http://localhost:8080/api/plans/ai/generate-dxf`
+  return `/api/plans/ai/generate-dxf`
 }
 
 export const generateAndExportDxf1 = async (planGenerateRequest: PlanGenerateRequest, options?: RequestInit): Promise<generateAndExportDxf1Response> => {
@@ -238,7 +238,7 @@ export const getGenerateAndAnalyze1Url = (params?: GenerateAndAnalyze1Params,) =
 
   const stringifiedParams = normalizedParams.toString();
 
-  return stringifiedParams.length > 0 ? `http://localhost:8080/api/plans/ai/generate-and-analyze?${stringifiedParams}` : `http://localhost:8080/api/plans/ai/generate-and-analyze`
+  return stringifiedParams.length > 0 ? `/api/plans/ai/generate-and-analyze?${stringifiedParams}` : `/api/plans/ai/generate-and-analyze`
 }
 
 export const generateAndAnalyze1 = async (planGenerateRequest: PlanGenerateRequest,

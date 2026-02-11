@@ -54,7 +54,7 @@ export const getGeneratePlanUrl = () => {
 
   
 
-  return `http://localhost:8080/api/plans/generate`
+  return `/api/plans/generate`
 }
 
 export const generatePlan = async (planGenerateRequest: PlanGenerateRequest, options?: RequestInit): Promise<generatePlanResponse> => {
@@ -143,7 +143,7 @@ export const getGenerateAndExportDxfUrl = () => {
 
   
 
-  return `http://localhost:8080/api/plans/generate-dxf`
+  return `/api/plans/generate-dxf`
 }
 
 export const generateAndExportDxf = async (planGenerateRequest: PlanGenerateRequest, options?: RequestInit): Promise<generateAndExportDxfResponse> => {
@@ -239,7 +239,7 @@ export const getGenerateAndAnalyzeUrl = (params?: GenerateAndAnalyzeParams,) => 
 
   const stringifiedParams = normalizedParams.toString();
 
-  return stringifiedParams.length > 0 ? `http://localhost:8080/api/plans/generate-and-analyze?${stringifiedParams}` : `http://localhost:8080/api/plans/generate-and-analyze`
+  return stringifiedParams.length > 0 ? `/api/plans/generate-and-analyze?${stringifiedParams}` : `/api/plans/generate-and-analyze`
 }
 
 export const generateAndAnalyze = async (planGenerateRequest: PlanGenerateRequest,
@@ -336,7 +336,7 @@ export const getExportDxfUrl = () => {
 
   
 
-  return `http://localhost:8080/api/plans/export/dxf`
+  return `/api/plans/export/dxf`
 }
 
 export const exportDxf = async (planResponse: PlanResponse, options?: RequestInit): Promise<exportDxfResponse> => {
@@ -432,7 +432,7 @@ export const getAnalyzePlanUrl = (params?: AnalyzePlanParams,) => {
 
   const stringifiedParams = normalizedParams.toString();
 
-  return stringifiedParams.length > 0 ? `http://localhost:8080/api/plans/analyze?${stringifiedParams}` : `http://localhost:8080/api/plans/analyze`
+  return stringifiedParams.length > 0 ? `/api/plans/analyze?${stringifiedParams}` : `/api/plans/analyze`
 }
 
 export const analyzePlan = async (planResponse: PlanResponse,
