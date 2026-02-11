@@ -23,7 +23,7 @@ public class RoomRequirementDto {
     @Schema(description = "Nom personnalise de la piece", example = "Salon")
     private String name;
 
-    @DecimalMin("4.0")
+    @DecimalMin("1.5")
     @Schema(description = "Surface minimale souhaitee en m2", example = "25.0")
     private Double minArea;
 

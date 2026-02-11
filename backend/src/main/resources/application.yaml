@@ -61,7 +61,11 @@ archigentn:
   # TODO: Configurer la cle API IA
   ai:
     api-key: ${AI_API_KEY:}
-    model: claude-sonnet-4-5-20250929
+    model: ${AI_MODEL:claude-sonnet-4-5-20250929}
+    api-url: ${AI_API_URL:https://api.anthropic.com/v1/messages}
+    max-tokens: ${AI_MAX_TOKENS:4096}
+    temperature: ${AI_TEMPERATURE:0.3}
+    timeout: ${AI_TIMEOUT:60}
   # Repertoire de sortie des fichiers generes (DXF, rendus 3D)
   output:
     directory: ${OUTPUT_DIR:./output}

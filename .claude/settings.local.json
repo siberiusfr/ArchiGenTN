@@ -4,7 +4,12 @@
       "Bash(dir:*)",
       "Bash(./mvnw.cmd compile -q)",
       "Bash(curl:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(Select-Object -First 40)",
+      "WebSearch",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(cmd.exe /c \"cd /d C:\\\\dev\\\\ArchiGenTN\\\\backend && mvnw.cmd compile\")",
+      "Bash(cmd.exe /c:*)"
     ]
   }
 }

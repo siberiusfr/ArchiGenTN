@@ -137,13 +137,4 @@ public class PlanController {
 
         return ResponseEntity.ok(new GenerateAndAnalyzeResponse(plan, analysis));
     }
-
-    /**
-     * Reponse combinee plan + analyse (inner record).
-     */
-    @Schema(description = "Reponse combinee: plan genere + analyse structurelle")
-    public record GenerateAndAnalyzeResponse(
-            @Schema(description = "Plan architectural genere") PlanResponse plan,
-            @Schema(description = "Rapport d'analyse structurelle") StructuralAnalysisResponse analysis
-    ) {}
 }
