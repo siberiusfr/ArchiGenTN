@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(./mvnw.cmd compile -q)",
+      "Bash(curl:*)",
+      "Bash(pkill:*)"
+    ]
+  }
+}

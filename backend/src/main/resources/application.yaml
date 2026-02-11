@@ -17,17 +17,34 @@ spring:
     serialization:
       write-dates-as-timestamps: false
 
-  # Flyway migrations
+  # Flyway migrations - desactive pour MVP (pas de DB requise pour les endpoints stateless)
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
     baseline-on-migrate: true
+
+  # Datasource - optionnel pour MVP (endpoints stateless)
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration
+      - org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration
 
   # Servlet
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
+
+# Springdoc / Swagger UI
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: method
+    display-request-duration: true
 
 # Actuator (health checks)
 management:
@@ -64,8 +81,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/archigentn
-    username: archigen
-    password: archigen_dev_2024
+    username: postgres
+    password: password
     driver-class-name: org.postgresql.Driver
 
   jooq:

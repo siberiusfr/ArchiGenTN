@@ -1,0 +1,38 @@
+{
+  "terrain": {
+    "width": 15.0,
+    "height": 25.0
+  },
+  "rooms": [
+    { "name": "Salon", "type": "salon", "x": 3.0, "y": 5.0, "width": 5.5, "height": 4.8 },
+    { "name": "Chambre 1", "type": "chambre", "x": 8.7, "y": 5.0, "width": 3.8, "height": 3.5 },
+    { "name": "Chambre 2", "type": "chambre", "x": 3.0, "y": 10.0, "width": 3.8, "height": 3.5 },
+    { "name": "Cuisine", "type": "cuisine", "x": 7.0, "y": 10.0, "width": 3.5, "height": 3.0 },
+    { "name": "Salle de bain", "type": "sdb", "x": 7.0, "y": 8.5, "width": 2.5, "height": 2.0 },
+    { "name": "WC", "type": "wc", "x": 3.0, "y": 13.7, "width": 1.6, "height": 1.6 },
+    { "name": "Entree", "type": "entree", "x": 5.0, "y": 5.0, "width": 2.5, "height": 2.0 }
+  ],
+  "doors": [
+    { "x": 5.8, "y": 5.0, "width": 1.0, "orientation": "horizontal" },
+    { "x": 8.5, "y": 6.0, "width": 0.9, "orientation": "vertical" },
+    { "x": 5.0, "y": 11.0, "width": 0.9, "orientation": "vertical" },
+    { "x": 7.0, "y": 11.0, "width": 0.9, "orientation": "vertical" },
+    { "x": 8.0, "y": 8.5, "width": 0.8, "orientation": "horizontal" },
+    { "x": 3.5, "y": 13.7, "width": 0.7, "orientation": "horizontal" }
+  ],
+  "windows": [
+    { "x": 4.5, "y": 9.8, "width": 1.5, "orientation": "horizontal" },
+    { "x": 9.5, "y": 8.5, "width": 1.2, "orientation": "horizontal" },
+    { "x": 4.0, "y": 13.5, "width": 1.2, "orientation": "horizontal" },
+    { "x": 3.0, "y": 6.5, "width": 1.2, "orientation": "vertical" },
+    { "x": 12.0, "y": 6.0, "width": 1.2, "orientation": "vertical" }
+  ],
+  "wallThickness": 0.20,
+  "metrics": {
+    "totalArea": 95.3,
+    "cos": 0.25,
+    "cuf": 0.25,
+    "regulationsCompliant": true,
+    "complianceMessage": null
+  }
+}

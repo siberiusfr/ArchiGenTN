@@ -1,0 +1,27 @@
+{
+  "terrain": {
+    "width": 15.0,
+    "height": 25.0
+  },
+  "requirements": {
+    "totalArea": 120.0,
+    "floors": 1,
+    "rooms": [
+      { "type": "salon", "name": "Salon", "minArea": 25.0, "count": 1 },
+      { "type": "chambre", "name": "Chambre", "minArea": 14.0, "count": 2 },
+      { "type": "cuisine", "name": "Cuisine", "minArea": 10.0, "count": 1 },
+      { "type": "sdb", "name": "Salle de bain", "minArea": 6.0, "count": 1 },
+      { "type": "wc", "name": "WC", "minArea": 2.5, "count": 1 },
+      { "type": "entree", "name": "Entree", "minArea": 5.0, "count": 1 }
+    ],
+    "style": "moderne"
+  },
+  "regulations": {
+    "cos": 0.40,
+    "cuf": 1.20,
+    "retraitFrontal": 5.0,
+    "retraitLateral": 3.0,
+    "retraitArriere": 3.0,
+    "hauteurMax": 9.0
+  }
+}
